@@ -1,0 +1,29 @@
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.banner__text { flex: 1; }
+
+.banner--warning {
+  background: var(--status-pending-bg);
+  color: #7A4A0C;
+}
+.banner--warning .material-icons-round { color: var(--status-pending); }
+
+.banner--danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.banner--danger .material-icons-round { color: var(--danger); }
+
+.banner--info {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+.banner--info .material-icons-round { color: var(--text-muted); }

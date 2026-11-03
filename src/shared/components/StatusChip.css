@@ -1,0 +1,11 @@
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-chip--sm { padding: 2px 8px; font-size: 11px; }
+.status-chip--md { padding: 4px 11px; font-size: 13px; }

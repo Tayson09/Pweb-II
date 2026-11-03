@@ -1,0 +1,14 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.breadcrumb__item { display: inline-flex; align-items: center; }
+.breadcrumb__sep { margin: 0 8px; color: var(--border-strong); }
+.breadcrumb a { color: var(--text-muted); }
+.breadcrumb a:hover { color: var(--accent-link); }
+.breadcrumb__current { color: var(--text); }

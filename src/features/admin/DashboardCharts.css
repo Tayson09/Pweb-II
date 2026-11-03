@@ -1,0 +1,35 @@
+.bars { display: flex; flex-direction: column; gap: 16px; }
+
+.bars__row { display: flex; align-items: center; gap: 12px; }
+.bars__row > .status-chip { width: 128px; flex-shrink: 0; }
+
+.bars__track {
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: #EEE9E1;
+  overflow: hidden;
+}
+.bars__track span { display: block; height: 100%; border-radius: 999px; }
+
+.bars__value { width: 48px; text-align: right; font-size: 13px; color: var(--text-muted); }
+
+.donut { display: flex; align-items: center; gap: 24px; }
+
+.donut__chart { position: relative; width: 220px; flex-shrink: 0; }
+.donut__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.donut__num { font-family: var(--font-display); font-size: 32px; font-weight: 600; }
+.donut__label { font-size: 11px; color: var(--text-muted); }
+
+.donut__legend { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.donut__legend-row { display: flex; align-items: center; gap: 10px; }
+.donut__legend-name { flex: 1; font-size: 14px; }
+.donut__legend-num { font-size: 14px; color: var(--text-muted); }
