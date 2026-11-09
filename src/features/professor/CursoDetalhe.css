@@ -1,0 +1,46 @@
+.curso-detalhe__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.curso-detalhe__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.curso-detalhe__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+  margin: 0;
+}
+
+.curso-detalhe__grid div { display: flex; flex-direction: column; gap: 4px; }
+.curso-detalhe__grid dt { font-size: 13px; color: var(--text-muted); }
+.curso-detalhe__grid dd { margin: 0; font-size: 15px; font-weight: 500; }
+
+.curso-detalhe__confirm {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.curso-detalhe__confirm .card { max-width: 440px; width: 100%; }
+
+.curso-detalhe__confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
