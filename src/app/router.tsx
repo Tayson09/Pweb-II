@@ -8,6 +8,9 @@ import { PlaceholderPage } from '../pages/PlaceholderPage';
 
 import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
+import { InicioAluno } from '../features/aluno/InicioAluno';
+import { CursosAluno } from '../features/aluno/CursosAluno';
+import { CursoDetalheAluno } from '../features/aluno/CursoDetalheAluno';
 import { CursosProfessor } from '../features/professor/CursosProfessor';
 import { NovoCurso } from '../features/deppi/NovoCurso';
 import { EditarCurso } from '../features/deppi/EditarCurso';
@@ -20,13 +23,21 @@ function InicioRouter() {
   const user = useSession(s => s.user)!;
   if (user.role === 'ADMIN') return <InicioAdmin />;
   if (user.role === 'PROFESSOR') return <InicioProfessor />;
+  if (user.role === 'ALUNO') return <InicioAluno />;
   return <PlaceholderPage />;
 }
 
 function CursosRouter() {
   const user = useSession(s => s.user)!;
   if (user.role === 'PROFESSOR') return <CursosProfessor />;
+  if (user.role === 'ALUNO') return <CursosAluno />;
   return <PlaceholderPage />;
+}
+
+function CursoDetalheRouter() {
+  const user = useSession(s => s.user)!;
+  if (user.role === 'ALUNO') return <CursoDetalheAluno />;
+  return <CursoDetalhe />;
 }
 
 // Telas ainda não entregues: mantêm a restrição por cargo e mostram "Em construção".
@@ -55,8 +66,8 @@ const router = createBrowserRouter([
           },
           {
             path: '/cursos/:id',
-            element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
-            children: [{ index: true, element: <CursoDetalhe /> }],
+            element: <RequireRole roles={['ALUNO', 'PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            children: [{ index: true, element: <CursoDetalheRouter /> }],
           },
           {
             path: '/cursos/:id/editar',
