@@ -10,6 +10,8 @@ import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { CursosProfessor } from '../features/professor/CursosProfessor';
 import { NovoCurso } from '../features/deppi/NovoCurso';
+import { EditarCurso } from '../features/deppi/EditarCurso';
+import { CursoDetalhe } from '../features/professor/CursoDetalhe';
 
 import { useSession } from '../features/auth/session.store';
 import type { Role } from '../shared/routes';
@@ -51,8 +53,16 @@ const router = createBrowserRouter([
             element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
             children: [{ index: true, element: <NovoCurso /> }],
           },
-          { path: '/cursos/:id', element: <PlaceholderPage /> },
-          { path: '/cursos/:id/editar', ...emConstrucao(['PROFESSOR', 'DEPPI', 'ADMIN']) },
+          {
+            path: '/cursos/:id',
+            element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            children: [{ index: true, element: <CursoDetalhe /> }],
+          },
+          {
+            path: '/cursos/:id/editar',
+            element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            children: [{ index: true, element: <EditarCurso /> }],
+          },
 
           { path: '/instituicoes', ...emConstrucao(['ADMIN']) },
           { path: '/usuarios', ...emConstrucao(['ADMIN']) },
