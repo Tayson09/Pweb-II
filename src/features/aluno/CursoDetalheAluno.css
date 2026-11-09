@@ -1,0 +1,59 @@
+.curso-aluno__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.curso-aluno__instituicao {
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.curso-aluno__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.curso-aluno__banner {
+  margin-bottom: 16px;
+}
+
+.curso-aluno__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 32px;
+  margin: 0;
+}
+
+.curso-aluno__grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.curso-aluno__grid dt {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.curso-aluno__grid dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.curso-aluno__action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+@media (max-width: 520px) {
+  .curso-aluno__grid {
+    grid-template-columns: 1fr;
+  }
+}

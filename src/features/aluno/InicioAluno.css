@@ -1,0 +1,92 @@
+.aluno-inicio__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.aluno-inicio__inscricoes .empty {
+  padding: 28px 16px;
+}
+
+.aluno-inicio__lista {
+  list-style: none;
+}
+
+.aluno-inicio__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.aluno-inicio__item:first-child {
+  padding-top: 0;
+}
+
+.aluno-inicio__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.aluno-inicio__curso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.aluno-inicio__icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+}
+
+.aluno-inicio__nome {
+  font-weight: 600;
+}
+
+.aluno-inicio__data {
+  margin-top: 3px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.aluno-inicio__ajuda {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-card);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.aluno-inicio__ajuda .material-icons-round {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .aluno-inicio__stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aluno-inicio__item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
