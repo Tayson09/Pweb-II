@@ -17,6 +17,7 @@ export type Curso = {
   id: string; nome: string; iniciais: string; instituicao: string;
   periodoIni: string; periodoFim: string; horarioIni: string; horarioFim: string;
   cargaHoraria: number; vagas: number; ocupadas: number; status: CourseStatus;
+  imagem?: string;
 };
 
 export type Professor = {

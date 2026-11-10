@@ -14,6 +14,47 @@
   flex-wrap: wrap;
 }
 
+.curso-detalhe__cover {
+  position: relative;
+  height: 200px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: var(--surface-alt);
+}
+
+.curso-detalhe__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.curso-detalhe__cover-vazio {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  background:
+    repeating-linear-gradient(135deg, #EEE9E1 0 10px, transparent 10px 20px),
+    #F4F3EF;
+}
+
+.curso-detalhe__cover-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+}
+
 .curso-detalhe__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
