@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+.app-shell.is-sidebar-hidden {
+  grid-template-columns: 1fr;
+}
+
 .app-content {
   display: flex;
   flex-direction: column;
