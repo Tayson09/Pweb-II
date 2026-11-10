@@ -1,5 +1,9 @@
 node_modules
 dist
+
+# Versão completa de referência (repo separado, não deve subir no repo do time)
+ToDoList-API-PWEBII/
+
 .claude
 .anthropic
 *.log
