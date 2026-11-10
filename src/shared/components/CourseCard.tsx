@@ -12,7 +12,9 @@ export function CourseCard({ curso }: { curso: Curso }) {
   return (
     <button className="course-card" onClick={() => nav(`/cursos/${curso.id}`)}>
       <div className="course-card__cover">
-        <span className="course-card__ini">{curso.iniciais}</span>
+        {curso.imagem
+          ? <img className="course-card__img" src={curso.imagem} alt={curso.nome} />
+          : <span className="course-card__ini">{curso.iniciais}</span>}
         <span className="course-card__chip"><StatusChip status={curso.status} size="sm" /></span>
       </div>
       <div className="course-card__body">
