@@ -1,0 +1,122 @@
+.deppi-inicio__shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.deppi-inicio__shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px;
+  text-align: left;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.deppi-inicio__shortcut:hover {
+  background: var(--surface-alt);
+  border-color: var(--border-strong);
+}
+
+.deppi-inicio__shortcut-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.deppi-inicio__shortcut-sub,
+.deppi-inicio__person-course,
+.deppi-inicio__date,
+.deppi-inicio__course-campus {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.deppi-inicio__lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.deppi-inicio__lists .card__action button {
+  color: var(--accent-link);
+  font-size: 13px;
+}
+
+.deppi-inicio__lists .card__action button:hover {
+  text-decoration: underline;
+}
+
+.deppi-inicio__pending-list,
+.deppi-inicio__course-list {
+  list-style: none;
+}
+
+.deppi-inicio__pending-item,
+.deppi-inicio__course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.deppi-inicio__pending-item:last-child,
+.deppi-inicio__course-item:last-child {
+  border-bottom: 0;
+}
+
+.deppi-inicio__person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.deppi-inicio__person > div,
+.deppi-inicio__course-item > div {
+  min-width: 0;
+}
+
+.deppi-inicio__person-name,
+.deppi-inicio__course-name {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deppi-inicio__person-course,
+.deppi-inicio__course-campus {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deppi-inicio__date {
+  flex-shrink: 0;
+}
+
+.deppi-inicio__workload {
+  flex-shrink: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+@media (max-width: 900px) {
+  .deppi-inicio__shortcuts,
+  .deppi-inicio__lists {
+    grid-template-columns: 1fr;
+  }
+}
