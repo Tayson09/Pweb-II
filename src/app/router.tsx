@@ -9,6 +9,7 @@ import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
+import { InicioDeppi } from '../features/deppi/InicioDeppi';
 import { CursosAluno } from '../features/aluno/CursosAluno';
 import { CursoDetalheAluno } from '../features/aluno/CursoDetalheAluno';
 import { CursosProfessor } from '../features/professor/CursosProfessor';
@@ -24,6 +25,7 @@ function InicioRouter() {
   if (user.role === 'ADMIN') return <InicioAdmin />;
   if (user.role === 'PROFESSOR') return <InicioProfessor />;
   if (user.role === 'ALUNO') return <InicioAluno />;
+  if (user.role === 'DEPPI') return <InicioDeppi />;
   return <PlaceholderPage />;
 }
 
