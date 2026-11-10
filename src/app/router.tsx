@@ -21,6 +21,7 @@ import { CursosProfessor } from '../features/professor/CursosProfessor';
 import { NovoCurso } from '../features/deppi/NovoCurso';
 import { EditarCurso } from '../features/deppi/EditarCurso';
 import { CursoDetalhe } from '../features/professor/CursoDetalhe';
+import { Perfil } from '../features/perfil/Perfil';
 
 import { useSession } from '../features/auth/session.store';
 import type { Role } from '../shared/routes';
@@ -112,7 +113,7 @@ const router = createBrowserRouter([
           { path: '/minhas-inscricoes', ...emConstrucao(['ALUNO']) },
           { path: '/minhas-inscricoes/:id', ...emConstrucao(['ALUNO']) },
 
-          { path: '/perfil', element: <PlaceholderPage /> },
+          { path: '/perfil', element: <Perfil /> },
         ],
       },
     ],
