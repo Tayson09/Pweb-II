@@ -4,6 +4,7 @@ import { Icon } from '../components/Icon';
 import { Avatar } from '../components/Avatar';
 import { useSession } from '../../features/auth/session.store';
 import { useTheme } from '../theme/theme.store';
+import { useUi } from './ui.store';
 import { NAV_ITEMS } from '../routes';
 import './Header.css';
 
@@ -17,6 +18,8 @@ export function Header() {
   const logout = useSession(s => s.logout);
   const theme = useTheme(s => s.theme);
   const toggleTheme = useTheme(s => s.toggle);
+  const sidebarHidden = useUi(s => s.sidebarHidden);
+  const toggleSidebar = useUi(s => s.toggleSidebar);
   const nav = useNavigate();
   const { pathname } = useLocation();
   const [aberto, setAberto] = useState(false);
@@ -40,7 +43,15 @@ export function Header() {
   return (
     <header className="header">
       <div className="header__left">
-        <button className="header__icon" aria-label="Menu"><Icon name="menu" size={22} color="var(--text-muted)" /></button>
+        <button
+          className="header__icon"
+          aria-label={sidebarHidden ? 'Mostrar menu' : 'Esconder menu'}
+          aria-pressed={!sidebarHidden}
+          title={sidebarHidden ? 'Mostrar menu' : 'Esconder menu'}
+          onClick={toggleSidebar}
+        >
+          <Icon name={sidebarHidden ? 'menu' : 'menu_open'} size={22} color="var(--text-muted)" />
+        </button>
         <span className="header__crumb">{tituloRota(pathname)}</span>
       </div>
 
