@@ -11,6 +11,7 @@ import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
 import { CursosDeppi } from '../features/deppi/CursosDeppi';
+import { InscricoesPage } from '../features/deppi/InscricoesPage';
 import { CursosAluno } from '../features/aluno/CursosAluno';
 import { CursoDetalheAluno } from '../features/aluno/CursoDetalheAluno';
 import { CursosProfessor } from '../features/professor/CursosProfessor';
@@ -83,7 +84,11 @@ const router = createBrowserRouter([
           { path: '/usuarios', ...emConstrucao(['ADMIN']) },
           { path: '/relatorios', ...emConstrucao(['ADMIN']) },
 
-          { path: '/inscricoes', ...emConstrucao(['DEPPI']) },
+          {
+            path: '/inscricoes',
+            element: <RequireRole roles={['DEPPI']} />,
+            children: [{ index: true, element: <InscricoesPage /> }],
+          },
           { path: '/inscricoes/:id', ...emConstrucao(['DEPPI']) },
           { path: '/professores', ...emConstrucao(['DEPPI']) },
           { path: '/professores/novo', ...emConstrucao(['DEPPI']) },
