@@ -10,6 +10,7 @@ import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
+import { CursosDeppi } from '../features/deppi/CursosDeppi';
 import { CursosAluno } from '../features/aluno/CursosAluno';
 import { CursoDetalheAluno } from '../features/aluno/CursoDetalheAluno';
 import { CursosProfessor } from '../features/professor/CursosProfessor';
@@ -33,6 +34,7 @@ function CursosRouter() {
   const user = useSession(s => s.user)!;
   if (user.role === 'PROFESSOR') return <CursosProfessor />;
   if (user.role === 'ALUNO') return <CursosAluno />;
+  if (user.role === 'DEPPI') return <CursosDeppi />;
   return <PlaceholderPage />;
 }
 

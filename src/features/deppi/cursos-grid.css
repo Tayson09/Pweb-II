@@ -4,6 +4,15 @@
   gap: 16px;
 }
 
+.cursos-deppi__search {
+  max-width: 420px;
+  margin: 16px 0;
+}
+
 @media (max-width: 1100px) {
   .cursos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .cursos-grid { grid-template-columns: 1fr; }
 }
