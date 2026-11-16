@@ -47,7 +47,7 @@ export function Header() {
           className="header__icon"
           aria-label={sidebarHidden ? 'Mostrar menu' : 'Esconder menu'}
           aria-pressed={!sidebarHidden}
-          title={sidebarHidden ? 'Mostrar menu' : 'Esconder menu'}
+          title={`${sidebarHidden ? 'Mostrar menu' : 'Esconder menu'} (Ctrl+B)`}
           onClick={toggleSidebar}
         >
           <Icon name={sidebarHidden ? 'menu' : 'menu_open'} size={22} color="var(--text-muted)" />
