@@ -10,6 +10,7 @@ import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { CursosAdmin } from '../features/admin/CursosAdmin';
 import { InstituicoesPage } from '../features/admin/InstituicoesPage';
 import { RelatoriosPage } from '../features/admin/RelatoriosPage';
+import { UsuariosPage } from '../features/admin/UsuariosPage';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
@@ -93,7 +94,11 @@ const router = createBrowserRouter([
             element: <RequireRole roles={['ADMIN']} />,
             children: [{ index: true, element: <InstituicoesPage /> }],
           },
-          { path: '/usuarios', ...emConstrucao(['ADMIN']) },
+          {
+            path: '/usuarios',
+            element: <RequireRole roles={['ADMIN']} />,
+            children: [{ index: true, element: <UsuariosPage /> }],
+          },
           {
             path: '/relatorios',
             element: <RequireRole roles={['ADMIN']} />,
