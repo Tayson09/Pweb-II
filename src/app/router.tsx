@@ -7,6 +7,8 @@ import { ForbiddenPage } from '../pages/ForbiddenPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 
 import { InicioAdmin } from '../features/admin/InicioAdmin';
+import { CursosAdmin } from '../features/admin/CursosAdmin';
+import { InstituicoesPage } from '../features/admin/InstituicoesPage';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
@@ -37,6 +39,7 @@ function InicioRouter() {
 
 function CursosRouter() {
   const user = useSession(s => s.user)!;
+  if (user.role === 'ADMIN') return <CursosAdmin />;
   if (user.role === 'PROFESSOR') return <CursosProfessor />;
   if (user.role === 'ALUNO') return <CursosAluno />;
   if (user.role === 'DEPPI') return <CursosDeppi />;
@@ -84,7 +87,11 @@ const router = createBrowserRouter([
             children: [{ index: true, element: <EditarCurso /> }],
           },
 
-          { path: '/instituicoes', ...emConstrucao(['ADMIN']) },
+          {
+            path: '/instituicoes',
+            element: <RequireRole roles={['ADMIN']} />,
+            children: [{ index: true, element: <InstituicoesPage /> }],
+          },
           { path: '/usuarios', ...emConstrucao(['ADMIN']) },
           { path: '/relatorios', ...emConstrucao(['ADMIN']) },
 
