@@ -14,8 +14,8 @@ const COR_INSCRICAO: Record<string, string> = {
 
 const COR_CURSO: Record<string, string> = {
   ANALISE: '#F5B544',
-  ANDAMENTO: '#5CC98A',
-  CONCLUIDO: '#7AA7F0',
+  ANDAMENTO: '#7AA7F0',
+  CONCLUIDO: '#5CC98A',
   FECHADO: '#A3A3A3',
 };
 
