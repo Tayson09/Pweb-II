@@ -3,6 +3,7 @@ import { Avatar } from '../../shared/components/Avatar';
 import { Banner } from '../../shared/components/Banner';
 import { Button } from '../../shared/components/Button';
 import { EmptyState } from '../../shared/components/EmptyState';
+import { Input } from '../../shared/components/Input';
 import { PageHeader } from '../../shared/components/PageHeader';
 import { SearchInput } from '../../shared/components/SearchInput';
 import { Select } from '../../shared/components/Select';
@@ -16,14 +17,23 @@ const CARGOS = [
   { valor: 'ADMIN', descricao: 'Gerencia instituições, usuários e relatórios.' },
 ];
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function UsuariosPage() {
   const usuarios = useDomain(s => s.usuarios);
   const concederCargo = useDomain(s => s.concederCargo);
+  const addUsuario = useDomain(s => s.addUsuario);
 
   const [busca, setBusca] = useState('');
   const [filtroCargo, setFiltroCargo] = useState('TODOS');
   const [alvo, setAlvo] = useState<Usuario | null>(null);
   const [cargoSelecionado, setCargoSelecionado] = useState('DEPPI');
+
+  const [novoAberto, setNovoAberto] = useState(false);
+  const [novoNome, setNovoNome] = useState('');
+  const [novoEmail, setNovoEmail] = useState('');
+  const [novoCargo, setNovoCargo] = useState('ALUNO');
+  const [erroNovo, setErroNovo] = useState('');
 
   const filtrados = usuarios.filter(usuario => {
     const casaBusca = `${usuario.nome} ${usuario.email}`.toLowerCase().includes(busca.toLowerCase());
@@ -42,9 +52,34 @@ export function UsuariosPage() {
     setAlvo(null);
   }
 
+  function abrirNovo() {
+    setNovoNome('');
+    setNovoEmail('');
+    setNovoCargo('ALUNO');
+    setErroNovo('');
+    setNovoAberto(true);
+  }
+
+  function criarUsuario() {
+    if (novoNome.trim().length < 3) {
+      setErroNovo('Informe o nome completo (mínimo 3 caracteres).');
+      return;
+    }
+    if (!EMAIL_REGEX.test(novoEmail.trim())) {
+      setErroNovo('Informe um e-mail válido.');
+      return;
+    }
+    addUsuario({ nome: novoNome.trim(), email: novoEmail.trim(), cargos: [novoCargo] });
+    setNovoAberto(false);
+  }
+
   return (
     <div className="usuarios-page">
-      <PageHeader title="Usuários" subtitle={`${usuarios.length} usuários`} />
+      <PageHeader
+        title="Usuários"
+        subtitle={`${usuarios.length} usuários`}
+        action={<Button leftIcon="add" onClick={abrirNovo}>Novo usuário</Button>}
+      />
 
       <div className="usuarios__filtros">
         <SearchInput
@@ -139,6 +174,50 @@ export function UsuariosPage() {
             <div className="usuarios-modal__actions">
               <Button variant="secondary" onClick={() => setAlvo(null)}>Cancelar</Button>
               <Button leftIcon="add_moderator" onClick={conceder}>Conceder {cargoSelecionado}</Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {novoAberto && (
+        <div className="usuarios-modal-backdrop" role="presentation" onClick={() => setNovoAberto(false)}>
+          <div
+            className="usuarios-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="usuarios-novo-title"
+            onClick={event => event.stopPropagation()}
+          >
+            <h2 id="usuarios-novo-title">Novo usuário</h2>
+            <p>Cadastre um novo usuário e defina o cargo inicial.</p>
+
+            <div className="usuarios-form">
+              <Input
+                label="Nome completo"
+                placeholder="Ex.: Maria da Silva"
+                value={novoNome}
+                onChange={event => { setNovoNome(event.target.value); setErroNovo(''); }}
+              />
+              <Input
+                label="E-mail"
+                type="email"
+                placeholder="usuario@ifce.edu.br"
+                value={novoEmail}
+                onChange={event => { setNovoEmail(event.target.value); setErroNovo(''); }}
+              />
+              <Select label="Cargo inicial" value={novoCargo} onChange={event => setNovoCargo(event.target.value)}>
+                <option value="ALUNO">ALUNO</option>
+                <option value="PROFESSOR">PROFESSOR</option>
+                <option value="DEPPI">DEPPI</option>
+                <option value="ADMIN">ADMIN</option>
+              </Select>
+            </div>
+
+            {erroNovo && <Banner variant="danger">{erroNovo}</Banner>}
+
+            <div className="usuarios-modal__actions">
+              <Button variant="secondary" onClick={() => setNovoAberto(false)}>Cancelar</Button>
+              <Button leftIcon="add" onClick={criarUsuario}>Cadastrar usuário</Button>
             </div>
           </div>
         </div>
