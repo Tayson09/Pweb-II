@@ -1,0 +1,115 @@
+.painel-prof__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.painel-prof__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.painel-prof__grid .card__action button {
+  color: var(--accent-link);
+  font-size: 13px;
+}
+
+.painel-prof__grid .card__action button:hover {
+  text-decoration: underline;
+}
+
+.painel-prof__list,
+.painel-prof__status-list {
+  list-style: none;
+}
+
+.painel-prof__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+
+.painel-prof__item:last-child {
+  border-bottom: 0;
+}
+
+.painel-prof__item:hover .painel-prof__item-name {
+  color: var(--accent-link);
+}
+
+.painel-prof__item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.painel-prof__item-name {
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.painel-prof__item-count {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.painel-prof__bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  overflow: hidden;
+}
+
+.painel-prof__bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 200ms ease;
+}
+
+.painel-prof__status-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.painel-prof__status-item:last-child {
+  border-bottom: 0;
+}
+
+.painel-prof__status-count {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .painel-prof__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .painel-prof__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .painel-prof__stats {
+    grid-template-columns: 1fr;
+  }
+}
