@@ -115,9 +115,16 @@ export const useDomain = create<DomainState>((set, get) => ({
   indeferirInscricao: (id, motivo) => set(s => ({
     inscricoes: s.inscricoes.map(i => i.id === id ? { ...i, status: 'INDEFERIDA', motivoIndeferimento: motivo } : i),
   })),
-  cancelarInscricao: (id) => set(s => ({
-    inscricoes: s.inscricoes.map(i => i.id === id ? { ...i, status: 'CANCELADA' } : i),
-  })),
+  cancelarInscricao: (id) => {
+    const insc = get().inscricoes.find(i => i.id === id);
+    if (!insc) return;
+    set(s => ({
+      inscricoes: s.inscricoes.map(i => i.id === id ? { ...i, status: 'CANCELADA' } : i),
+      cursos: insc.status === 'DEFERIDA'
+        ? s.cursos.map(c => c.id === insc.cursoId ? { ...c, ocupadas: Math.max(0, c.ocupadas - 1) } : c)
+        : s.cursos,
+    }));
+  },
   criarInscricao: (alunoId, alunoNome, alunoEmail, matricula, cursoId, cursoNome) => {
     const insc: Inscricao = {
       id: crypto.randomUUID(), alunoId, alunoNome, alunoEmail, matricula,

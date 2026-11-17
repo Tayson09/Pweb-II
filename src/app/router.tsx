@@ -25,6 +25,8 @@ import { NovoCurso } from '../features/deppi/NovoCurso';
 import { EditarCurso } from '../features/deppi/EditarCurso';
 import { CursoDetalhe } from '../features/professor/CursoDetalhe';
 import { Perfil } from '../features/perfil/Perfil';
+import { MinhasInscricoesPage } from '../features/aluno/MinhasInscricoesPage';
+import { InscricaoDetalheAluno } from '../features/aluno/InscricaoDetalheAluno';
 
 import { useSession } from '../features/auth/session.store';
 import type { Role } from '../shared/routes';
@@ -123,8 +125,16 @@ const router = createBrowserRouter([
             children: [{ index: true, element: <ProfessorDetalhe /> }],
           },
 
-          { path: '/minhas-inscricoes', ...emConstrucao(['ALUNO']) },
-          { path: '/minhas-inscricoes/:id', ...emConstrucao(['ALUNO']) },
+          {
+            path: '/minhas-inscricoes',
+            element: <RequireRole roles={['ALUNO']} />,
+            children: [{ index: true, element: <MinhasInscricoesPage /> }],
+          },
+          {
+            path: '/minhas-inscricoes/:id',
+            element: <RequireRole roles={['ALUNO']} />,
+            children: [{ index: true, element: <InscricaoDetalheAluno /> }],
+          },
 
           { path: '/perfil', element: <Perfil /> },
         ],

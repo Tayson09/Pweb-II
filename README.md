@@ -11,6 +11,7 @@ Portal de cursos de extensão do IFCE. Frontend em React + TypeScript, com dados
   - sem permissão, o acesso vai para a página 403.
 - Início do ADMIN: indicadores técnicos e estado da plataforma.
 - Administração do ADMIN: usuários, permissões e auditoria.
+- Minhas inscrições do aluno: filtros, detalhes e cancelamento de solicitações.
 - Instituições e cursos são gerenciados exclusivamente pelos cargos responsáveis.
 - Início do PROFESSOR: lista e busca de cursos.
 - Página de criar curso (`/cursos/novo`), disponível para PROFESSOR e DEPPI. O curso é criado com status "Em análise".

@@ -1,0 +1,31 @@
+.inscricao-detalhe__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 8px 0 20px;
+}
+.inscricao-detalhe__head h1 { font-size: 24px; }
+.inscricao-detalhe__head p { margin-top: 4px; color: var(--text-muted); font-size: 13px; }
+.inscricao-detalhe__banner { margin-bottom: 16px; }
+.inscricao-detalhe__curso { margin-top: 16px; }
+.inscricao-detalhe__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 32px;
+  margin: 0;
+}
+.inscricao-detalhe__grid div { display: flex; flex-direction: column; gap: 5px; }
+.inscricao-detalhe__grid dt { color: var(--text-muted); font-size: 12px; }
+.inscricao-detalhe__grid dd { margin: 0; font-size: 14px; font-weight: 500; }
+.inscricao-detalhe__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+.inscricao-detalhe__confirm p { color: var(--text-muted); }
+@media (max-width: 520px) {
+  .inscricao-detalhe__head { flex-direction: column; }
+  .inscricao-detalhe__grid { grid-template-columns: 1fr; }
+}

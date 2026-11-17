@@ -27,3 +27,9 @@
   color: var(--text);
 }
 .banner--info .material-icons-round { color: var(--text-muted); }
+
+.banner--success {
+  background: var(--status-deferred-bg);
+  color: var(--status-deferred);
+}
+.banner--success .material-icons-round { color: var(--status-deferred); }
