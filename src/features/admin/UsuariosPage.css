@@ -82,6 +82,13 @@
 .usuarios-modal h2 { margin-bottom: 10px; font-size: 22px; }
 .usuarios-modal > p { color: var(--text-muted); line-height: 1.6; }
 
+.usuarios-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 18px 0;
+}
+
 .usuarios-radios {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { INITIAL_DATA } from './mocks';
+import { iniciais } from '../format';
 
 export type CourseStatus = 'ANALISE' | 'ANDAMENTO' | 'CONCLUIDO' | 'FECHADO';
 export type EnrollmentStatus = 'PENDENTE' | 'DEFERIDA' | 'INDEFERIDA' | 'CANCELADA';
@@ -49,6 +50,7 @@ type DomainState = {
 
   addProfessor: (p: Omit<Professor, 'id'>) => void;
 
+  addUsuario: (u: Omit<Usuario, 'id' | 'criadoEm' | 'iniciais'>) => Usuario;
   concederCargo: (userId: string, cargo: string) => void;
 
   deferirInscricao: (id: string) => { ok: boolean; motivo?: string };
@@ -82,6 +84,16 @@ export const useDomain = create<DomainState>((set, get) => ({
 
   addProfessor: (p) => set(s => ({ professores: [...s.professores, { ...p, id: crypto.randomUUID() }] })),
 
+  addUsuario: (u) => {
+    const usuario: Usuario = {
+      ...u,
+      id: crypto.randomUUID(),
+      criadoEm: new Date().toISOString().slice(0, 10),
+      iniciais: iniciais(u.nome),
+    };
+    set(s => ({ usuarios: [...s.usuarios, usuario] }));
+    return usuario;
+  },
   concederCargo: (userId, cargo) => set(s => ({
     usuarios: s.usuarios.map(u => u.id === userId
       ? { ...u, cargos: u.cargos.includes(cargo) ? u.cargos : [...u.cargos, cargo] }
