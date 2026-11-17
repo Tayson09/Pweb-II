@@ -1,8 +1,34 @@
-.select__box { cursor: pointer; }
+.select__box {
+  position: relative;
+  cursor: pointer;
+}
 
+/* O select nativo cobre todo o box (padding + seta), então o menu abre
+   clicando em qualquer ponto do campo, inclusive sobre a seta. */
 .select__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 38px 0 14px;
   appearance: none;
   -webkit-appearance: none;
-  cursor: pointer;
+  border: none;
   background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* A seta é só decorativa: ignora cliques para não bloquear o select embaixo. */
+.select__box > .material-icons-round {
+  position: relative;
+  margin-left: auto;
+  pointer-events: none;
+}
+
+/* Garante contraste do menu nativo (principalmente no tema escuro). */
+.select__input option {
+  background: var(--surface-card);
+  color: var(--text);
 }
