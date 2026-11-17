@@ -9,6 +9,7 @@ import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { CursosAdmin } from '../features/admin/CursosAdmin';
 import { InstituicoesPage } from '../features/admin/InstituicoesPage';
+import { RelatoriosPage } from '../features/admin/RelatoriosPage';
 import { UsuariosPage } from '../features/admin/UsuariosPage';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
@@ -98,7 +99,11 @@ const router = createBrowserRouter([
             element: <RequireRole roles={['ADMIN']} />,
             children: [{ index: true, element: <UsuariosPage /> }],
           },
-          { path: '/relatorios', ...emConstrucao(['ADMIN']) },
+          {
+            path: '/relatorios',
+            element: <RequireRole roles={['ADMIN']} />,
+            children: [{ index: true, element: <RelatoriosPage /> }],
+          },
 
           {
             path: '/inscricoes',
