@@ -7,10 +7,9 @@ import { ForbiddenPage } from '../pages/ForbiddenPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 
 import { InicioAdmin } from '../features/admin/InicioAdmin';
-import { CursosAdmin } from '../features/admin/CursosAdmin';
-import { InstituicoesPage } from '../features/admin/InstituicoesPage';
-import { RelatoriosPage } from '../features/admin/RelatoriosPage';
 import { UsuariosPage } from '../features/admin/UsuariosPage';
+import { PermissoesPage } from '../features/admin/PermissoesPage';
+import { AuditoriaPage } from '../features/admin/AuditoriaPage';
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
@@ -41,7 +40,6 @@ function InicioRouter() {
 
 function CursosRouter() {
   const user = useSession(s => s.user)!;
-  if (user.role === 'ADMIN') return <CursosAdmin />;
   if (user.role === 'PROFESSOR') return <CursosProfessor />;
   if (user.role === 'ALUNO') return <CursosAluno />;
   if (user.role === 'DEPPI') return <CursosDeppi />;
@@ -75,24 +73,18 @@ const router = createBrowserRouter([
           { path: '/cursos', element: <CursosRouter /> },
           {
             path: '/cursos/novo',
-            element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            element: <RequireRole roles={['PROFESSOR', 'DEPPI']} />,
             children: [{ index: true, element: <NovoCurso /> }],
           },
           {
             path: '/cursos/:id',
-            element: <RequireRole roles={['ALUNO', 'PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            element: <RequireRole roles={['ALUNO', 'PROFESSOR', 'DEPPI']} />,
             children: [{ index: true, element: <CursoDetalheRouter /> }],
           },
           {
             path: '/cursos/:id/editar',
-            element: <RequireRole roles={['PROFESSOR', 'DEPPI', 'ADMIN']} />,
+            element: <RequireRole roles={['PROFESSOR', 'DEPPI']} />,
             children: [{ index: true, element: <EditarCurso /> }],
-          },
-
-          {
-            path: '/instituicoes',
-            element: <RequireRole roles={['ADMIN']} />,
-            children: [{ index: true, element: <InstituicoesPage /> }],
           },
           {
             path: '/usuarios',
@@ -100,11 +92,15 @@ const router = createBrowserRouter([
             children: [{ index: true, element: <UsuariosPage /> }],
           },
           {
-            path: '/relatorios',
+            path: '/permissoes',
             element: <RequireRole roles={['ADMIN']} />,
-            children: [{ index: true, element: <RelatoriosPage /> }],
+            children: [{ index: true, element: <PermissoesPage /> }],
           },
-
+          {
+            path: '/auditoria',
+            element: <RequireRole roles={['ADMIN']} />,
+            children: [{ index: true, element: <AuditoriaPage /> }],
+          },
           {
             path: '/inscricoes',
             element: <RequireRole roles={['DEPPI']} />,

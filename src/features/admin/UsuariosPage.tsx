@@ -13,8 +13,8 @@ import { dataCurta } from '../../shared/format';
 import './UsuariosPage.css';
 
 const CARGOS = [
-  { valor: 'DEPPI', descricao: 'Analisa inscrições e gerencia cursos e professores.' },
-  { valor: 'ADMIN', descricao: 'Gerencia instituições, usuários e relatórios.' },
+  { valor: 'DEPPI', descricao: 'Gerencia cursos, inscrições e professores.' },
+  { valor: 'ADMIN', descricao: 'Gerencia usuários, cargos e configurações técnicas.' },
 ];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

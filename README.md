@@ -9,9 +9,11 @@ Portal de cursos de extensão do IFCE. Frontend em React + TypeScript, com dados
   - o menu lateral mostra apenas o que o cargo pode acessar;
   - sem login, o acesso volta para `/login`;
   - sem permissão, o acesso vai para a página 403.
-- Início do ADMIN: totais e gráficos resumidos.
+- Início do ADMIN: indicadores técnicos e estado da plataforma.
+- Administração do ADMIN: usuários, permissões e auditoria.
+- Instituições e cursos são gerenciados exclusivamente pelos cargos responsáveis.
 - Início do PROFESSOR: lista e busca de cursos.
-- Página de criar curso (`/cursos/novo`), disponível para PROFESSOR, DEPPI e ADMIN. O curso é criado com status "Em análise".
+- Página de criar curso (`/cursos/novo`), disponível para PROFESSOR e DEPPI. O curso é criado com status "Em análise".
 
 As demais telas aparecem como "Em construção" e serão entregues de forma gradual.
 
@@ -34,7 +36,7 @@ Sessão e login são fake. Os usuários ficam em `src/features/auth/mock-users.t
 
 | Cargo     | E-mail                      | Senha    | Telas disponíveis nesta entrega        |
 |-----------|-----------------------------|----------|----------------------------------------|
-| ADMIN     | admin@deppi.local           | admin123 | Início, criar curso                    |
+| ADMIN     | admin@deppi.local           | admin123 | Início, usuários, permissões, auditoria |
 | DEPPI     | marcia.holanda@ifce.edu.br  | deppi123 | Criar curso (somente pela URL)         |
 | PROFESSOR | paulo.viana@ifce.edu.br     | prof123  | Início, cursos, criar curso            |
 | ALUNO     | ana.rocha@aluno.ifce.edu.br | aluno123 | Apenas "Em construção"                 |

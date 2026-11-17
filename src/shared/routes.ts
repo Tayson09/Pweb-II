@@ -9,13 +9,13 @@ export type NavItem = {
 
 export const NAV_ITEMS: NavItem[] = [
   { path: '/inicio',            label: 'Início',            icon: 'home',       roles: ['ALUNO', 'PROFESSOR', 'DEPPI', 'ADMIN'] },
-  { path: '/cursos',            label: 'Cursos',            icon: 'school',     roles: ['ALUNO', 'PROFESSOR', 'DEPPI', 'ADMIN'] },
-  { path: '/instituicoes',      label: 'Instituições',      icon: 'apartment',  roles: ['ADMIN'] },
+  { path: '/cursos',            label: 'Cursos',            icon: 'school',     roles: ['ALUNO', 'PROFESSOR', 'DEPPI'] },
+  { path: '/permissoes',        label: 'Permissões',        icon: 'admin_panel_settings', roles: ['ADMIN'] },
+  { path: '/auditoria',         label: 'Auditoria',         icon: 'history',    roles: ['ADMIN'] },
   { path: '/usuarios',          label: 'Usuários',          icon: 'group',      roles: ['ADMIN'] },
   { path: '/inscricoes',        label: 'Inscrições',        icon: 'fact_check', roles: ['DEPPI'] },
   { path: '/professores',       label: 'Professores',       icon: 'badge',      roles: ['DEPPI'] },
   { path: '/minhas-inscricoes', label: 'Minhas inscrições', icon: 'assignment', roles: ['ALUNO'] },
-  { path: '/relatorios',        label: 'Relatórios',        icon: 'bar_chart',  roles: ['ADMIN'] },
   { path: '/perfil',            label: 'Perfil',            icon: 'person',     roles: ['ALUNO', 'PROFESSOR', 'DEPPI', 'ADMIN'] },
 ];
 
