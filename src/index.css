@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   --accent: #C2410C;
   --accent-link: #D97706;
   --accent-soft: rgba(194, 65, 12, 0.09);
@@ -46,6 +48,8 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
+
   --accent: #C2410C;
   --accent-link: #D97706;
   --accent-soft: rgba(194, 65, 12, 0.16);
