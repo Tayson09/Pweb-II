@@ -9,11 +9,8 @@ import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { InicioAdmin } from '../features/admin/InicioAdmin';
 import { CursosAdmin } from '../features/admin/CursosAdmin';
 import { InstituicoesPage } from '../features/admin/InstituicoesPage';
-<<<<<<< HEAD
-=======
 import { RelatoriosPage } from '../features/admin/RelatoriosPage';
 import { UsuariosPage } from '../features/admin/UsuariosPage';
->>>>>>> a0ecf488878f6904562238cc3d4cfee44121bfc0
 import { InicioProfessor } from '../features/professor/InicioProfessor';
 import { InicioAluno } from '../features/aluno/InicioAluno';
 import { InicioDeppi } from '../features/deppi/InicioDeppi';
@@ -97,10 +94,6 @@ const router = createBrowserRouter([
             element: <RequireRole roles={['ADMIN']} />,
             children: [{ index: true, element: <InstituicoesPage /> }],
           },
-<<<<<<< HEAD
-          { path: '/usuarios', ...emConstrucao(['ADMIN']) },
-          { path: '/relatorios', ...emConstrucao(['ADMIN']) },
-=======
           {
             path: '/usuarios',
             element: <RequireRole roles={['ADMIN']} />,
@@ -111,7 +104,6 @@ const router = createBrowserRouter([
             element: <RequireRole roles={['ADMIN']} />,
             children: [{ index: true, element: <RelatoriosPage /> }],
           },
->>>>>>> a0ecf488878f6904562238cc3d4cfee44121bfc0
 
           {
             path: '/inscricoes',
